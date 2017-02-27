@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SlotsContainer from './SlotsContainer'
+import SlotsContainer from './containers/SlotsContainer'
 
 class App extends Component {
   render() {
