@@ -19,10 +19,8 @@ class SlotsContainer extends Component {
   }
   render(){
     return (
-      <div className='container'>
         <Slots
           slots={this.state.slots}/>
-      </div>
     )
   }
 

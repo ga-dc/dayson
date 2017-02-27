@@ -1,5 +1,86 @@
 body {
+  font-family: Courier;
+  background-color: #555340;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  color: #b1ff0a;
+}
+
+.search, .search-label {
+  font-family: Courier;
+  font-size: 48px;
+  border-radius: .25em;
+  padding: .25em;
+  text-align: center;
+  color: #b1ff0a;
+  background-color: rgb(79,67,48);
+  margin: 0;
+}
+
+.search-label {
+  font-size: 16px;
+  padding: .25em;
+}
+
+span {
+  margin: .25em;
+  padding: .5em;
+}
+
+.info, .instructors {
+  color: rgb(177,255,10);
+  border-radius: .25em;
+  padding: .5em;
+  background-color: rgb(79,67,48);
+}
+
+.title {
+  border-radius: .25em;
+  padding: .25em;
+  font-weight: bold;
+  font-size: 24px;
+  -webkit-text-stroke: 1px rgba(122,122,122,0.5);
+  background-color: rgb(255,255,222);
+  color: rgb(99,67,48);
+}
+
+.slot {
+  margin: .5em;
+  border: 4px double rgb(79,67,48);
+  border-radius: 1em;
+  padding: .5em;
+  min-width: 15%;
+  max-width: 15%;
+  flex:1;
+  background-color: #e2e0c9;
+  background-image: radial-gradient(ellipse farthest-side at 0% 0%, rgba(226,255,171,0.2) 0%, rgba(67,37,18,0.1) 95%);
+  text-align: center;
+}
+
+.container {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.instructors {
+  padding: .5em;
+  border-radius: .25em;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: rgb(255,255,222);
+  color: rgb(99,67,48);
+}
+
+.info-item {
+  margin: .25em;
 }
