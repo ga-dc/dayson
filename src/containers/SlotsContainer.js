@@ -6,21 +6,22 @@ class SlotsContainer extends Component {
   constructor(){
     super()
     this.state = {
-      slots: []
+      slotsRes: []
     }
   }
   componentDidMount(){
     this.getClasses();
   }
   getClasses(){
-    SlotModel.all().then( res => this.setState({slots: res.data}) ).then(
-      ()=>{console.log(this.state.slots)}
+    SlotModel.all().then( res => this.setState({slotsRes: res.data}) ).then(
+      // ()=>{console.log(this.state.slotsRes)}
     )
   }
+
   render(){
     return (
-        <Slots
-          slots={this.state.slots}/>
+          <Slots
+            slots={this.state.slotsRes}/>
     )
   }
 

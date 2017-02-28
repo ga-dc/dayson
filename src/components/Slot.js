@@ -2,18 +2,15 @@ import React, {Component} from 'react'
 
 class Slot extends Component {
   componentWillMount(){
-    // console.log(this.props);
-    let instructors =
-      (this.props.lead) ? `${this.props.lead}`:''
-    instructors +=
-      (this.props.support) ? ` & ${this.props.support}`:'';
-
-    this.setState({instructors:instructors})
+    let instructors = (this.props.lead) ? `${this.props.lead}`:''
+      + (this.props.support) ? ` & ${this.props.support}`:'';
+    let url = (typeof this.props.url === "object") ? "/#" : this.props.url;
+    this.setState({instructors, url})
   }
   render(){
     return (
       <div className='slot'>
-        <p className='title'>{this.props.title}</p>
+        <p className='title'><a href={this.state.url}>{this.props.title}</a></p>
         <div className='info'>
           <p className='info-item'>Week {this.props.week}</p>
           <p className='info-item'>{this.props.time}</p>
