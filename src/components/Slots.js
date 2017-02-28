@@ -15,23 +15,21 @@ class Slots extends Component {
   }
   filterResults(filter){
     let filtered = this.props.slots.filter( slot => {
-      return slot.title === filter || slot.lead === filter || slot.support === filter
-    } )
-    this.setState({slots: filtered})
+      return Object.keys(slot).map( key => {
+        if (typeof slot[key]==="string" && slot[key].includes(filter)){
+          return true;
+        }
+      }).includes(true);
+    })
+    this.setState({slots: filtered}, _=>{console.log(`$$$$ ${filtered.length}`)})
   }
   componentWillMount(){
     this.setState({slots: this.props.slots}, _=>{
-      console.log("ss cb in componentWillMount");
-      console.log(`props: ${this.props.slots.length}`);
-      console.log(`state: ${this.state.slots.length}`);
-      console.log("ss cb in componentWillMount");
+      console.log(`CMW: props: ${this.props.slots.length} state: ${this.state.slots.length}`);
     })
   }
   render(){
-    console.log("render");
-    console.log(`props: ${this.props.slots.length}`);
-    console.log(`state: ${this.state.slots.length}`);
-    console.log("render");
+    console.log(`RNDR: props: ${this.props.slots.length} state: ${this.state.slots.length}`);
     let slots = this.state.slots.map( (slot, i) =>{
       return (
         <Slot
