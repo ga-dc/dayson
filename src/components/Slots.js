@@ -3,9 +3,8 @@ import React, {Component} from 'react'
 import Slot from "./Slot"
 import Search from './Search'
 
-
-
 class Slots extends Component {
+
   constructor(){
     super()
     this.state = {
@@ -16,8 +15,8 @@ class Slots extends Component {
       supports: 0
     }
   }
+
   filterResults(filter, options){
-    console.log(filter, options);
     let {leads, supports} = {leads: 0, supports: 0};
 
     let filtered = this.props.slots.filter( slot => {
@@ -31,12 +30,10 @@ class Slots extends Component {
     })
     if (options) {
       options.forEach(option=>{
-        console.log(option);
         switch (option){
           case "week":
             break;
           case "staffless":
-            console.log("oh shit");
             filtered = filtered.filter(slot=>slot.lead||slot.support)
             break;
           default:
@@ -51,12 +48,14 @@ class Slots extends Component {
       supports: supports
     })
   }
+
   componentWillMount(){
     this.setState({
       slots: this.props.slots,
       results: this.props.slots.length
     })
   }
+
   render(){
     let slots = this.state.slots.map( (slot, i) =>{
       return (

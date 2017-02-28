@@ -9,7 +9,6 @@ class Search extends Component {
     }
   }
   search(){
-    console.log(this.state.options);
     this.props.filterResults(this.state.searchText, this.state.options);
   }
 
