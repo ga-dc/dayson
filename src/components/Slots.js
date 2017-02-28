@@ -16,8 +16,10 @@ class Slots extends Component {
       supports: 0
     }
   }
-  filterResults(filter){
-    let {leads, supports} = {leads:0, supports:0};
+  filterResults(filter, options){
+    console.log(filter, options);
+    let {leads, supports} = {leads: 0, supports: 0};
+
     let filtered = this.props.slots.filter( slot => {
       return Object.keys(slot).map( key => {
         if (typeof slot[key]==="string" && slot[key].includes(filter)){
@@ -27,6 +29,21 @@ class Slots extends Component {
         }
       }).includes(true);
     })
+    if (options) {
+      options.forEach(option=>{
+        console.log(option);
+        switch (option){
+          case "week":
+            break;
+          case "staffless":
+            console.log("oh shit");
+            filtered = filtered.filter(slot=>slot.lead||slot.support)
+            break;
+          default:
+            break;
+        }
+      })
+    }
     this.setState({
       slots: filtered,
       results: filtered.length,
@@ -60,7 +77,7 @@ class Slots extends Component {
     return (
       <main>
         <Search
-          filterResults={ filter => this.filterResults(filter) }
+          filterResults={ (filter, options) => this.filterResults(filter, options) }
           results={this.state.results}
           leads={this.state.leads}
           supports={this.state.supports}/>

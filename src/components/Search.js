@@ -3,11 +3,29 @@ import React, {Component} from 'react'
 class Search extends Component {
   constructor(){
     super()
-    this.state = {search: ""}
+    this.state = {
+      searchText: "",
+      options: []
+    }
   }
-  search(evt){
+  search(){
+    console.log(this.state.options);
+    this.props.filterResults(this.state.searchText, this.state.options);
+  }
+
+  handleSearch(evt){
     let searchText = evt.target.value;
-    this.props.filterResults(searchText);
+    this.setState({searchText}, _=>{this.search() });
+  }
+  handleToggle(evt){
+    let options = this.state.options.slice();
+    if (evt.target.checked){
+      options.push(evt.target.name);
+    } else {
+      options.splice(options.indexOf(evt.target.name), 1)
+    }
+
+    this.setState({options}, _=>{this.search() });
   }
   render(){
     return (
@@ -16,10 +34,24 @@ class Search extends Component {
           className='search'
           type='text'
           autoFocus={true}
-          onChange={(evt)=>this.search(evt)}
+          onChange={(evt)=>this.handleSearch(evt)}
           placeholder="Search/Filter"/>
-        <p> <input className='option' type='checkbox'/> Current Week </p>
-        <p> <input className='option' type='checkbox'/> Hide Staffless Items </p>
+        <p>
+          <input
+            className='option'
+            type='checkbox'
+            name='week'
+            onChange={ evt => this.handleToggle(evt) }/>
+          <label htmlFor='week' className='search-label'>Current Week </label>
+        </p>
+        <p>
+          <input
+            className='option'
+            type='checkbox'
+            name='staffless'
+            onChange={ evt => this.handleToggle(evt) }/>
+          <label htmlFor='staffless' className='search-label'> Hide Staffless Items </label>
+        </p>
         <span className='search'> {this.props.results} </span>
         <span className='search-label'>results </span>
         <span className='search'> {this.props.leads} </span>
