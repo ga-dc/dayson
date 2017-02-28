@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 
 class Slot extends Component {
   componentWillMount(){
-    let instructors = (this.props.lead) ? `${this.props.lead}`:''
-      + (this.props.support) ? ` & ${this.props.support}`:'';
+    let instructors = ''
+    if (this.props.lead) {instructors += this.props.lead}
+    if (this.props.support) {instructors += ` & ${this.props.support}`}
     let url = (typeof this.props.url === "object") ? "/#" : this.props.url;
     this.setState({instructors, url})
   }
