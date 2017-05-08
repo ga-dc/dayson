@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 class Search extends Component {
+
   constructor(){
     super()
     this.state = {
@@ -8,6 +9,7 @@ class Search extends Component {
       options: []
     }
   }
+
   search(){
     this.props.filterResults(this.state.searchText, this.state.options);
   }
@@ -16,6 +18,7 @@ class Search extends Component {
     let searchText = evt.target.value;
     this.setState({searchText}, _=>{this.search() });
   }
+
   handleToggle(evt){
     let options = this.state.options.slice();
     if (evt.target.checked){
@@ -24,8 +27,9 @@ class Search extends Component {
       options.splice(options.indexOf(evt.target.name), 1)
     }
 
-    this.setState({options}, _=>{this.search() });
+    this.setState({options},  _ => { this.search() });
   }
+
   render(){
     return (
       <header>

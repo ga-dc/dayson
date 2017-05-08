@@ -28,19 +28,21 @@ class Slots extends Component {
         }
       }).includes(true);
     })
+
     if (options) {
       options.forEach(option=>{
         switch (option){
           case "week":
             break;
           case "staffless":
-            filtered = filtered.filter(slot=>slot.lead||slot.support)
+            filtered = filtered.filter(slot => slot.lead||slot.support)
             break;
           default:
             break;
         }
       })
     }
+
     this.setState({
       slots: filtered,
       results: filtered.length,
@@ -69,8 +71,7 @@ class Slots extends Component {
           classroom={slot.classroom}
           lead={slot.lead}
           support={slot.support}
-          url={slot.url}
-        />
+          url={slot.url} />
       )
     })
     return (
@@ -79,7 +80,7 @@ class Slots extends Component {
           filterResults={ (filter, options) => this.filterResults(filter, options) }
           results={this.state.results}
           leads={this.state.leads}
-          supports={this.state.supports}/>
+          supports={this.state.supports} />
         <div className='container'>
           {slots}
         </div>
